@@ -1,0 +1,54 @@
+<h2> Cantidad total de productos registrados: {{ cantidadTotalProductos }}</h2>
+
+<p>
+    Buscar Producto:
+    <input type="text" [(ngModel)]="nombreProducto">
+</p>
+
+<p>Busqueda Actual: {{ nombreProducto }}</p>
+
+<button (click)="accionProductos()">
+    {{ botonProductos ? 'OCULTAR PRODUCTOS' : 'MOSTRAR PRODUCTOS' }}
+</button>
+
+<div *ngIf="botonProductos === true">
+    <div *ngFor="let productos of productos; let i = index">
+        <ul>
+            <li>
+                <p>=====================================</p>
+                <h3> {{ i + 1 }} Nombre: {{ productos.producto }} </h3>
+                <p> ID: {{productos.id }}</p>
+                <p> Categoria: {{ productos.categoria }} </p>
+                <p> Precio: Q{{ productos.precio }} </p>
+                <p> Stock: {{ productos.stock }}</p>
+                <p *ngIf="productos.stock > 3"> Stock suficiente</p>
+                <p *ngIf="productos.stock > 0 && productos.stock <= 3"> ¡Pocas unidades!</p>
+                <p *ngIf="productos.stock === 0"> Agotado</p>
+                <p> Estado: {{ productos.stock > 0 ? 'Disponible' : 'Agotado' }} </p>
+                <p *ngIf="productos.activo">Producto Activo</p>
+                <p *ngIf="!productos.activo">Producto Deshabilitado</p>
+                <button (click)="verDetalle(productos)">Ver Detalles</button>
+                <br>
+                <button (click)="aumentarStock(productos)" [disabled]="!productos.activo">+Stock</button>
+                <br>
+                <button (click)="disminuirStock(productos)"
+                    [disabled]="productos.stock === 0 || !productos.activo">-Stock</button>
+                <p>=====================================</p>
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="productoSeleccionado">
+        <h3>Producto seleccionado</h3>
+        <p>Nombre: {{ productoSeleccionado.producto }}</p>
+        <p>Categoría: {{ productoSeleccionado.categoria }}</p>
+        <p>Precio: Q{{ productoSeleccionado.precio }}</p>
+        <p>Stock: {{ productoSeleccionado.stock }}</p>
+        <p *ngIf="productoSeleccionado.stock > 3"> Stock suficiente</p>
+        <p *ngIf="productoSeleccionado.stock > 0 && productoSeleccionado.stock <= 3"> ¡Pocas unidades!</p>
+        <p *ngIf="productoSeleccionado.stock === 0"> Agotado</p>
+        <p>Estado: {{ productoSeleccionado.stock > 0 ? 'Disponible' : 'Agotado' }}</p>
+        <p *ngIf="productoSeleccionado.activo">Producto activo</p>
+        <p *ngIf="!productoSeleccionado.activo">Producto deshabilitado</p>
+    </div>
+</div>
