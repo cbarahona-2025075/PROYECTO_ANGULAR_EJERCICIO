@@ -10,7 +10,7 @@
     "serve:ssr:proyecto_angular_ejercicio": "node dist/proyecto_angular_ejercicio/server/server.mjs"
   },
   "private": true,
-  "packageManager": "npm@12.0.2",
+  "packageManager": "pnpm@10.29.2",
   "dependencies": {
     "@angular/common": "^22.1.0",
     "@angular/compiler": "^22.1.0",

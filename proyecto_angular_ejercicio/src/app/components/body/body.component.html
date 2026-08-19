@@ -1,8 +1,14 @@
-<h2> Cantidad total de productos registrados: {{ cantidadTotalProductos }}</h2>
+<hr>
+<h2> Total de Productos: {{ cantidadTotalProductos }}</h2>
+<h2> Productos Disponibles : {{ productosDisponibles }}</h2>
+<h2> Productos Agotados: {{ productosAgotados }}</h2>
+<hr>
+
+<br>
 
 <p>
     Buscar Producto:
-    <input type="text" [(ngModel)]="nombreProducto">
+    <input type="text" [(ngModel)]="nombreProducto" (input)="filtrarProductos()">
 </p>
 
 <p>Busqueda Actual: {{ nombreProducto }}</p>
@@ -11,11 +17,11 @@
     {{ botonProductos ? 'OCULTAR PRODUCTOS' : 'MOSTRAR PRODUCTOS' }}
 </button>
 
-<div *ngIf="botonProductos === true">
-    <div *ngFor="let productos of productos; let i = index">
+<div class="mi-div" *ngIf="botonProductos === true">
+    <div *ngFor="let productos of productosFiltrados; let i = index">
         <ul>
             <li>
-                <p>=====================================</p>
+                <hr>
                 <h3> {{ i + 1 }} Nombre: {{ productos.producto }} </h3>
                 <p> ID: {{productos.id }}</p>
                 <p> Categoria: {{ productos.categoria }} </p>
@@ -33,10 +39,14 @@
                 <br>
                 <button (click)="disminuirStock(productos)"
                     [disabled]="productos.stock === 0 || !productos.activo">-Stock</button>
-                <p>=====================================</p>
+                <hr>
             </li>
         </ul>
     </div>
+
+    <p *ngIf="productosFiltrados.length === 0">
+        No se encontraron productos con el nombre de: {{ nombreProducto }}.
+    </p>
 
     <div *ngIf="productoSeleccionado">
         <h3>Producto seleccionado</h3>

@@ -1,0 +1,96 @@
+/* Contenedor principal */
+.mi-div {
+    width: 90%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Títulos de estadísticas */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Búsqueda */
+input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-left: 10px;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+/* Botones */
+button {
+    padding: 8px 14px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+/* Lista de productos */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Nombre del producto */
+h3 {
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Información del producto */
+p {
+    color: #555;
+    margin: 8px 0;
+}
+
+/* Producto seleccionado */
+.mi-div > div:last-child {
+    background-color: #e9f5ff;
+    border: 1px solid #007bff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Mensaje cuando no hay productos */
+.mi-div p[ng-reflect-ng-if] {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+}

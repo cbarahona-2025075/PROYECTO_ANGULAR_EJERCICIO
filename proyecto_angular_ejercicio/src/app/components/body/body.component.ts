@@ -36,12 +36,27 @@ export class BodyComponent {
 
   aumentarStock(producto: any) {
     producto.stock++;
+    this.productosDisponibles = this.productos.filter(p => p.stock > 0).length;
+    this.productosAgotados = this.productos.filter(p => p.stock === 0).length;
   }
 
   disminuirStock(producto: any) {
     if (producto.stock > 0) {
       producto.stock--;
+      this.productosDisponibles = this.productos.filter(p => p.stock > 0).length;
+      this.productosAgotados = this.productos.filter(p => p.stock === 0).length;
     }
   }
+
+
+  productosDisponibles = this.productos.filter(p => p.stock > 0).length;
+  productosAgotados = this.productos.filter(p => p.stock === 0).length;
+  productosFiltrados = this.productos;
+
+  filtrarProductos () {
+    this.productosFiltrados = this.productos.filter(p => p.producto.toLocaleLowerCase().includes(this.nombreProducto.toLowerCase()));
+  }
+
+  
 }
 
